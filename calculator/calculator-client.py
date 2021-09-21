@@ -8,8 +8,6 @@ import calculator_pb2_grpc
 def run():
     with grpc.insecure_channel('localhost:50052') as channel:
         stub = calculator_pb2_grpc.CalculateStub(channel)
-        print(calculator_pb2.CalculateRequest(x=1, y=2, input_num_values=[1, 2, 3, 4, 5], input_nums=[1, 2, 3, 4, 5]).SerializeToString)
-        print("zz", calculator_pb2.CalculateRequest(x=1, y=2, input_num_values=[1, 2, 3, 4, 5], input_nums=[1, 2, 3, 4, 5]))
         response = stub.GetPlus(calculator_pb2.CalculateRequest(x=1, y=2, input_num_values=[1,2,3,4,5], input_nums=[1,2,3,4,5]))
         print("GetPlus client received: " + response.result, response)
         response = stub.GetMinus(calculator_pb2.CalculateRequest(x=1, y=2, input_num_values=[1,2,3,4,5], input_nums=[1,2,3,4,5]))
