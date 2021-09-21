@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package calculator;
+
+service Calculate {
+  rpc GetPlus (CalculateRequest) returns (CalculateReply) {}
+  rpc GetMinus (CalculateRequest) returns (CalculateReply) {}
+  rpc GetMultiply (CalculateRequest) returns (CalculateReply) {}
+  rpc GetDivision (CalculateRequest) returns (CalculateReply) {}
+}
+
+// The request message containing the x, y and type.
+// "required" type is not allowed at proto3
+message CalculateRequest {
+  optional string calculate_type = 1;
+  int32 x = 2;
+  int32 y = 3;
+  repeated int32 input_num_values = 4 [packed=true];
+  repeated int32 input_nums = 5;
+}
+
+// The response message containing Calculate
+message CalculateReply {
+  string result = 1;
+}
