@@ -9,7 +9,6 @@ import calculator_pb2_grpc
 
 class Calculator(calculator_pb2_grpc.CalculateServicer):
     def GetPlus(self, request, context):
-        print(request.__dir__())
         response = int(request.x) + int(request.y)
         return calculator_pb2.CalculateReply(result=str(response))
 
